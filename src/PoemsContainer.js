@@ -4,13 +4,13 @@ import Poem from "./Poem";
 class PoemsContainer extends React.Component {
  
   render() {
-    console.log("inside poems container:", this.props.poems)
+    console.log("inside poems container:", this.props.favorites)
     
     return (
       <div className="poems-container">
         { this.props.poems.map(poem => {
             return (
-              <Poem {...poem} />
+              <Poem {...poem} favorites={this.props.favorites}/>
             )
           })
         }

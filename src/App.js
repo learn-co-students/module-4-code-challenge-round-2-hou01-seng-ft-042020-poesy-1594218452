@@ -6,7 +6,8 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
   state = {
     poems: [],
-    showSideBar: false
+    showSideBar: false,
+    favorites: []
   }
 
   componentDidMount() {
@@ -38,25 +39,6 @@ class App extends React.Component {
 
 
 
-
-  // const Search = () => {
-  //   const [showResults, setShowResults] = React.useState(false)
-  //   const onClick = () => setShowResults(true)
-  //   return (
-  //     <div>
-  //       <input type="submit" value="Search" onClick={onClick} />
-  //       { showResults ? <Results /> : null }
-  //     </div>
-  //   )
-  // }
-  
-  // const Results = () => (
-  //   <div id="results" className="search-results">
-  //     Some Results
-  //   </div>
-  // )
-
-
   handleSideBar = () => {
     this.state.showSideBar?
     this.setState({
@@ -76,7 +58,7 @@ class App extends React.Component {
           {/* {false && <NewPoemForm />} */}
            {this.state.showSideBar ? <NewPoemForm onSubmit={this.createPoem}/> : null } 
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} favorites={this.state.favorites}/>
       </div>
     );
   }

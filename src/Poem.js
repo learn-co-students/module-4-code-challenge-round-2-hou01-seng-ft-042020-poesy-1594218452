@@ -16,6 +16,7 @@ class Poem extends React.Component {
   }
 
   render() {
+    console.log("favorites inside card", this.props.favorites)
     return (
       <div>
         <h3>{this.props.title}</h3>
@@ -24,6 +25,8 @@ class Poem extends React.Component {
           <strong>- By Author: {this.props.author}</strong>
         </p>
         <button onClick={()=>this.markRead()} >{this.state.read}</button>
+        <button>  Favorite</button>
+
       </div>
     );
   }
