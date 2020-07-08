@@ -3,6 +3,8 @@ import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
+const URL='http://localhost:6001/poems'
+
 class App extends React.Component {
 
   state = {
@@ -13,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:6001/poems')
+    fetch(URL)
     .then(res => res.json())
     .then(poems => {
       this.setState({
@@ -24,7 +26,7 @@ class App extends React.Component {
   }
 
   showForm = () => {
-    console.log("TEST", this.state.show)
+    // console.log("TEST", this.state.show)
     let newBoolean = !this.state.show
     this.setState({
       show: newBoolean
@@ -44,7 +46,7 @@ class App extends React.Component {
         content: e.target[2].value,
       })
     }
-    fetch('http://localhost:6001/poems', options)
+    fetch(URL, options)
     .then(res => res.json())
     .then(poem => {
       console.log("AAA",poem)
@@ -56,7 +58,7 @@ class App extends React.Component {
   }
 
   deletePome = (pomeId) => {
-    fetch(`http://localhost:6001/poems/${pomeId}`, {
+    fetch(URL + `/${pomeId}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json'
